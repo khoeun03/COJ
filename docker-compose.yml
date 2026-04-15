@@ -1,0 +1,51 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: oj-backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: postgres://oj_user:oj_pass@db:5432/oj_db
+      RUST_LOG: info
+    depends_on:
+      - db
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - oj-net
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: oj-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - oj-net
+
+  db:
+    image: postgres:16
+    container_name: oj-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: oj_user
+      POSTGRES_PASSWORD: oj_pass
+      POSTGRES_DB: oj_db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - oj-net
+
+volumes:
+  db-data:
+
+networks:
+  oj-net:
