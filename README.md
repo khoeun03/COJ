@@ -1,16 +1,4 @@
-제출자의 Private key / Public key 기반 인증
-
-"프로필"에 관한 정보는 랭킹 서버에서?
-"채점 서버"는 신원만
-
-- Solution을 서명해서 제출 <--
-
-- 통과 점수
-- 채점 결과 점수
-
-채점 서버는 User 정보를 알 필요가 없음!
-
-- 문제: (서버식별자)/(문제번호)
+https://github.com/nulta/deps-protocol
 
 Problem
 - id

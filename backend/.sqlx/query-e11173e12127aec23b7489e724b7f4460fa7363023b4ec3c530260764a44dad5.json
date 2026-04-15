@@ -1,0 +1,34 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, max_files, max_total_code_bytes FROM problem WHERE id = $1",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int8"
+      },
+      {
+        "ordinal": 1,
+        "name": "max_files",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 2,
+        "name": "max_total_code_bytes",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int8"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "e11173e12127aec23b7489e724b7f4460fa7363023b4ec3c530260764a44dad5"
+}
